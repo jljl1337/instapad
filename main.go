@@ -30,6 +30,12 @@ func main() {
 
 	processed, skipped, padded := 0, 0, 0
 
+	outDir := "padded"
+	if err := os.MkdirAll(outDir, 0755); err != nil {
+		fmt.Fprintf(os.Stderr, "error creating output directory: %v\n", err)
+		os.Exit(1)
+	}
+
 	for _, entry := range entries {
 		if entry.IsDir() {
 			continue
@@ -73,7 +79,7 @@ func main() {
 
 		paddedImg := addWhitePadding(img, newW, newH)
 
-		outName := base + "_padded" + ext
+		outName := filepath.Join(outDir, name)
 		if err := saveJPEG(outName, paddedImg); err != nil {
 			fmt.Fprintf(os.Stderr, "  ✗ save error: %v\n", err)
 			continue
