@@ -14,10 +14,10 @@ import (
 
 // Acceptable aspect ratio range (width / height):
 //
-//	3:4    → 0.75  (portrait limit)
+//	4:5 → 0.8  (portrait limit)
 //	1.91:1 → 1.91  (landscape limit)
 const (
-	minRatio = 3.0 / 4.0  // 0.75
+	minRatio = 4.0 / 5.0  // 0.8
 	maxRatio = 1.91 / 1.0 // 1.91
 )
 
